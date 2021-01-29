@@ -31,24 +31,26 @@ Hit Next: Permissions and under Permissions, search and attach the following AWS
 3. AmazonSageMakerFullAccess
 4. Additionally, you would also have to create and attach a custom policy as shown below:
 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AthenaResultsS3BucketCrossAccountAccessPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<ATHENA RESULTS BUCKET NAME IN ACCOUNT A>/",
+        "arn:aws:s3:::<ATHENA RESULTS BUCKET NAME IN ACCOUNT A>",
+        "arn:aws:s3:::*SageMaker*"
+      ]
+    }
+  ]
+}
+```
 
-`{`
-`  "Version": "2012-10-17",`
-`  "Statement": [`
-`    {`
-`      "Sid": "AthenaResultsS3BucketCrossAccountAccessPolicy",`
-`      "Effect": "Allow",`
-`      "Action": [`
-`        "s3:*"`
-`      ],`
-`      "Resource": [`
-`        "arn:aws:s3:::<ATHENA RESULTS BUCKET NAME IN ACCOUNT A>/",`
-`        "arn:aws:s3:::<ATHENA RESULTS BUCKET NAME IN ACCOUNT A>",`
-`        "arn:aws:s3:::*SageMaker*"`
-`      ]`
-`    }`
-`  ]`
-`}`
 
 `<ATHENA RESULTS BUCKET NAME IN ACCOUNT A>` is the bucket to which Athena query results will be written to. When we use the STS cross account role created above inside account A, it can run Athena queries against the Offline store content in account B without being in account B. The custom policy defined above allows Athena (inside account B) to write back the results to a results bucket in account A. Ensure this results bucket is created in account A before creating the policy above.
 
@@ -128,20 +130,17 @@ Now, since we had created an execution role in account A, use the ARN of this ro
 
 
 ```
-`{`
-`    ``"Version"``:`` ``"2012-10-17"``,`
-`    ``"Statement"``:`` ``[`
-`        ``{`
-`            ``"Effect"``:`` ``"Allow"``,`
-`            ``"Principal"``:`` ``{
-                "Service": "sagemaker.amazonaws.com",`
-`                ``"AWS"``:`` ``"ARN OF SAGEMAKER EXECUTION ROLE CREATED IN ACCOUNT A"`
-`            ``},`
-`            ``"Action"``:`` ``"sts:AssumeRole"`
-`        ``}`
-`    ``]`
-`}`
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "sagemaker.amazonaws.com",
+                "AWS": "ARN OF SAGEMAKER EXECUTION ROLE CREATED IN ACCOUNT A"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
 ```
-
-
-
