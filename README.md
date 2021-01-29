@@ -22,7 +22,7 @@ You can give SageMaker resources (notebooks, endpoints, training jobs)  created 
 
 Under *IAM → Create role →  Another AWS account*, provide the 12 digit account ID of account B as shown below:
 
-[Image: image.png]
+[Image: ./img/image-1.png]
 Hit Next: Permissions and under Permissions, search and attach the following AWS managed policies:
 
 
@@ -60,7 +60,7 @@ Once all the policies are attached, hit next and provide a name for this role. F
 
 * Create a SageMaker notebook instance with an IAM execution role. This role grants SageMaker notebook with the necessary permissions needed to execute actions on the feature store. By default, the following policies are attached when you create a new execution. See image below:
 
-[Image: image.png]We need to create and attach the following policies in addition to the default ones mentioned above. 
+[Image: ./img/image-2.png]We need to create and attach the following policies in addition to the default ones mentioned above. 
 
 * Custom policy as shown below which allows the execution role to perform certain S3 actions needed to interact with the feature store (Offline).
 
