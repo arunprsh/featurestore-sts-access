@@ -1,32 +1,56 @@
 {
-    "description": "Aggregated features for each credit card, streamed intraday",
-    
-    "features": [
-          {
-              "name": "cc_num",
-              "type": "bigint",
-              "description": "Credit Card Number (Unique)"
-          },
-          {
-              "name": "num_trans_last_1w",
-              "type": "bigint",
-              "description": "Aggregated Metric: Average number of transactions for the card aggregated by past 1 week"
-          },
-          {
-              "name": "avg_amt_last_1w",
-              "type": "double",
-              "description": "Aggregated Metric: Average transaction amount for the card aggregated by past 1 week"
-          },
-          {
-              "name": "trans_time",
-              "type": "double",
-              "description": "Required feature for event timestamp"
-          }
-      ],
-    
-      "record_identifier_feature_name": "cc_num",
-      "event_time_feature_name": "trans_time",
-      "tags": [{"Key": "Environment", "Value" : "DEV"}, 
-               {"Key": "IngestionType", "Value": "Batch"},
-               {"Key": "CostCenter", "Value": "C18"}]
+  "description": "Customer purchases features",
+  "features": [
+    {
+      "name": "pid",
+      "type": "bigint",
+      "description": "Purchase ID (Unique)"
+    },
+    {
+      "name": "cid",
+      "type": "bigint",
+      "description": "Customer ID (Unique)"
+    },
+    {
+      "name": "product_name",
+      "type": "string",
+      "description": "Name of the product"
+    },
+    {
+      "name": "purchase_amount",
+      "type": "double",
+      "description": "Price of the product"
+    },
+    {
+      "name": "product_category",
+      "type": "string",
+      "description": "Product category"
+    },
+    {
+      "name": "purchased_at",
+      "type": "string",
+      "description": "Time of purchase"
+    },
+    {
+      "name": "created_at",
+      "type": "double",
+      "description": "Required feature for event time"
+    }   
+  ],
+  "record_identifier_feature_name": "pid",
+  "event_time_feature_name": "created_at",
+  "tags": [
+    {
+      "Key": "Environment",
+      "Value": "PROD"
+    },
+    {
+      "Key": "IngestionType",
+      "Value": "Stream"
+    },
+    {
+      "Key": "CostCenter",
+      "Value": "C19"
+    }
+  ]
 }
