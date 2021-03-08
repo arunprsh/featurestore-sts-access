@@ -216,6 +216,6 @@ Run the notebooks in this order:
     * This notebook shows how you can assume the feature store access role that you created in account B using STS AssumeRole API call to generate temporary credentials.
     * Next, it shows how to create service clients using the temporary credentials to perform feature store specific actions inside account B from account A.
     * This notebook demonstrates 3 scenarios:
-        * Scenario 1 - How to CREATE a feature group inside the centralized feature store and WRITE/READ features to and from it.
+        * Scenario 1 - How to CREATE a feature group inside the centralized feature store (account B) and WRITE/READ features to and from it.
         * Scenario 2 - How to WRITE features to a feature group already located in the centralized feature store (account B).
         * Scenario 3 - How to READ features from a feature group already located in the centralized feature store (account B).
