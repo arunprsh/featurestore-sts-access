@@ -204,4 +204,9 @@ Now, since we had created an execution role in account A, use the ARN of this ex
 
 ### Validate the setup process using the notebooks in this repository:
 
-Once all the roles and the accompanying policies are setup as per the instructions detailed above, you can validate that everything is working correctly. The code block shown below should be executed in a SageMaker notebook running within account A. It demonstrates how you can assume the cross-account role from account B using STS via the AssumeRole API call. This call returns a set of temporary credentials that account A can use to create any service clients. When using these clients, your function has permissions conferred to it by the assumed role, and acts as if it belongs to account B. For more information, see assume_role in the AWS SDK for Python (Boto 3) documentation.
+Once all the roles and the accompanying policies are setup as per the instructions detailed above, you can validate the setup by executing the example notebooks contained in this repository. 
+
+Run the notebooks in this order:
+
+1. account-b.ipynb - This notebook sets up the centralized feature store in account B.
+2. account-a.ipynb - This notebook demonstrates how you can assume the cross-account role from account B using STS via the AssumeRole API call. This call returns a set of temporary credentials that account A can use to create any service clients. When using these clients, your function has permissions conferred to it by the assumed role, and acts as if it belongs to account B. For more information, see assume_role in the AWS SDK for Python (Boto 3) documentation.
