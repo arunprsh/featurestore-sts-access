@@ -162,7 +162,6 @@ We know account A is the account that is enabled to access the online and offlin
       "Effect": "Allow",
       "Principal": {
         "AWS": [
-          "arn:aws:iam::<ACCOUNT A ID>/<SAGEMAKER EXEC ROLE>",
           "arn:aws:iam::<ACCOUNT B>:role/cross-account-assume-role"
         ]
       },
