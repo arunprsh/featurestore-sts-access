@@ -176,7 +176,7 @@ We know account A is the account that is enabled to access the online and offlin
 }
 ```
 
-### **Inside Account B:**
+#### **Inside Account B:**
 
 Now, since we had created an execution role in account A, use the ARN of this execution role to modify the trust relationships policy of the cross-account assume role in account B. 
 
@@ -208,5 +208,14 @@ Once all the roles and the accompanying policies are setup as per the instructio
 
 Run the notebooks in this order:
 
-1. account-b.ipynb - This notebook sets up the centralized feature store in account B.
-2. account-a.ipynb - This notebook demonstrates how you can assume the cross-account role from account B using STS via the AssumeRole API call. This call returns a set of temporary credentials that account A can use to create any service clients. When using these clients, your function has permissions conferred to it by the assumed role, and acts as if it belongs to account B. For more information, see assume_role in the AWS SDK for Python (Boto 3) documentation.
+1. account-b.ipynb
+    * This notebook sets up the centralized feature store (Offline and Online) in account B.
+    * Creates a feature group named `customers` and populates it with customer centric features.
+    
+2. account-a.ipynb
+    * This notebook shows how you can assume the feature store access role that you created in account B using STS AssumeRole API call to generate temporary credentials.
+    * Next, it shows how to create service clients using the temporary credentials to perform feature store specific actions inside account B from account A.
+    * This notebook demonstrates 3 scenarios:
+        * Scenario 1 - How to CREATE a feature group inside the centralized feature store and WRITE/READ features to and from it.
+        * Scenario 2 - How to WRITE features to a feature group already located in the centralized feature store (account B).
+        * Scenario 3 - How to READ features from a feature group already located in the centralized feature store (account B).
