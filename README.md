@@ -1,6 +1,6 @@
 ## Using STS to enable cross account access for SageMaker Feature Store
 
-The example notebooks in this repository details the steps needed to enable cross account access for SageMaker Feature Store using an assumed role via AWS Security Token Service (**STS**). STS is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users. STS returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token.
+The example notebooks in this repository details the steps needed to enable cross account access for SageMaker Feature Store using an assumed role via [AWS Security Token Service](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) (**STS**). STS is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users. STS returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token.
 
 <img src="./img/feature-store-cross-account-access.png" />
 
